@@ -15,7 +15,7 @@ waitlist submission, no marketplace functionality.
 gear-envy-template/
 ├── index.html               # Screen 1 — Home
 ├── for-lenders.html         # Screen 2 — For lenders (supply side)
-├── waitlist-confirmed.html  # Screen 3 — Waitlist confirmation + referral tiers
+├── waitlist-confirmation.html  # Screen 3 — Waitlist confirmation + referral tiers
 ├── styles/
 │   ├── tokens.css           # Every design token (the porting surface)
 │   └── main.css             # Shared component styles, class selectors only

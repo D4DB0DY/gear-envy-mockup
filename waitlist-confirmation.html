@@ -13,6 +13,32 @@
 </head>
 <body class="ge-page">
 
+  <!--
+    MOCK DATA — this screen renders against static placeholder values.
+    Shape to wire against a real waitlist provider later (as JSON):
+
+    {
+      "member": {
+        "email": "you@example.com.au",
+        "referralCode": "K7X2DR",                       // fills [YOUR-CODE]
+        "referralUrl": "https://gearenvy.com.au/r/K7X2DR",
+        "inviteCount": 0,                               // friends joined via link
+        "waitlistPosition": null                        // [PENDING — POSITION LOGIC]
+      },
+      "tiers": [
+        { "invites": 3,  "reward": "Priority access" },
+        { "invites": 10, "reward": "First month of protection free" },
+        { "invites": 25, "reward": "Founding member badge" }
+      ],
+      "nextTier": { "invites": 3, "reward": "Priority access" },
+      "progressPct": 0                                  // inviteCount / nextTier.invites * 100
+    }
+
+    Bindings: .ge-copy-value ← member.referralUrl · card rows ← inviteCount,
+    waitlistPosition, nextTier · .ge-progress-fill width ← progressPct ·
+    .ge-tier cards ← tiers[].
+  -->
+
   <header class="ge-header">
     <div class="ge-container">
       <nav class="ge-nav" aria-label="Main">

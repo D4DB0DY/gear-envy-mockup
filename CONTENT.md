@@ -50,7 +50,7 @@ Australian English throughout. Bracketed markers are intentional — see
 
 ### 03 / For lenders
 - H2: Your kit could be *working weekends.*
-- Lede: You bought well. Now let it earn. Listing takes minutes, you set the price and the calendar, and every rental is covered by Gear Envy's protection terms. [PROTECTION WORDING — PENDING LEGAL]
+- Lede: You bought well. Now let it earn. Listing takes minutes, you set the price and the calendar, and every rental runs through Gear Envy's protection process. [PROTECTION WORDING — PENDING LEGAL]
 - Step 01 — List in minutes: Photograph your gear, set your daily rate and availability. We guide pricing so your listing stays competitive.
 - Step 02 — Approve every rental: Renters are ID-verified. You review each request and approve or decline — your gear, your call, every time.
 - Step 03 — Get paid on return: Hand over, hand back, get paid. Gear Envy takes a service fee of [PENDING — D-011] — the rest is yours.
@@ -77,7 +77,7 @@ Australian English throughout. Bracketed markers are intentional — see
 ### Waitlist CTA band
 - Eyebrow: Waitlist open
 - H2: The gear you want, *without the debate.*
-- Lede: Join the Sydney waitlist. Renters get first pick of the catalogue; lenders get priority onboarding. Bring friends and move up the queue.
+- Lede: Join the Sydney waitlist. Renters get first pick of the catalogue; lenders get priority onboarding. Then climb the founding tiers: 3 invites earns priority access, 10 earns your first month of protection free, 25 earns the founding member badge.
 - Button: Join the waitlist
 
 ---
@@ -108,7 +108,7 @@ Australian English throughout. Bracketed markers are intentional — see
 - **Verified renters.** Every renter completes ID verification before their first booking.
 - **Documented condition checks.** Photo-based check-out and check-in at every handover, stored on the booking.
 - **Security deposit.** A deposit of [PENDING — D-017] is held for the duration of the rental.
-- **Gear protection.** Rentals are covered by Gear Envy's protection terms for accidental damage. [PROTECTION WORDING — PENDING LEGAL]
+- **Gear protection.** Every rental runs through Gear Envy's protection process for accidental damage. [PROTECTION WORDING — PENDING LEGAL]
 - **You approve everything.** No instant book without your say-so. Decline any request, no questions asked.
 - **Human support.** Real people in Sydney if anything goes sideways. [PENDING — SUPPORT HOURS]
 
@@ -140,7 +140,7 @@ Australian English throughout. Bracketed markers are intentional — see
 
 ---
 
-## Screen 3 — Waitlist confirmation (`waitlist-confirmed.html`)
+## Screen 3 — Waitlist confirmation (`waitlist-confirmation.html`)
 
 ### Confirmation
 - Eyebrow: Confirmed · Waitlist
