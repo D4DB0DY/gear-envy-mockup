@@ -1,0 +1,9 @@
+{
+  "name": "gear-envy-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gear Envy — Sharetribe-ready static mockup (local preview server)",
+  "scripts": {
+    "dev": "node dev-server.js"
+  }
+}

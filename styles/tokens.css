@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Gear Envy — design tokens
+   --------------------------------------------------------------------------
+   Every colour, font, size and spacing value lives here as a CSS custom
+   property. Nothing outside this file may contain a hex colour or a px
+   value (the two @media breakpoint values are the documented exception —
+   see README.md "How tokens map into Sharetribe").
+
+   Sharetribe slot names (--marketplaceColor etc.) are used wherever a
+   concept maps, so this file can drop into
+   src/styles/marketplaceDefaults.css. Gear Envy–only concepts are
+   prefixed --ge-.
+
+   Baseline grid: mobile-first, 6px baseline below 768px, 8px baseline
+   from 768px up. Spacing tokens are redefined at the 768px breakpoint so
+   every margin, padding and component height stays on the baseline.
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------
+     Sharetribe slots
+     ------------------------------------------------------------------ */
+  --marketplaceColor: #f3c13a;        /* amber — CTAs, highlights        */
+  --marketplaceColorDark: #c99a1f;    /* amber, hover/active shade       */
+  --marketplaceColorLight: #fbe9b8;   /* amber tint — badges, washes     */
+  --colorSuccess: #1f7a46;
+  --colorFail: #b3402a;
+  --fontFamily: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Breakpoints map to Sharetribe's custom media:
+     --viewportMedium  = 768px
+     --viewportLarge   = 1024px
+     (plain CSS cannot reference custom properties in @media, so the raw
+     values appear in main.css media queries — nowhere else) */
+
+  /* ------------------------------------------------------------------
+     Palette — warm paper, deep forest ink, amber accent
+     ------------------------------------------------------------------ */
+  --ge-paper: #f2ecdc;                /* page background                 */
+  --ge-paper-2: #eae3d1;              /* raised surface                  */
+  --ge-paper-3: #d9d2c2;              /* sunken surface / image wells    */
+  --ge-paper-muted: #c9c2b0;          /* muted text on dark surfaces     */
+  --ge-ink: #0e2a22;                  /* text + dark sections            */
+  --ge-ink-2: #16352c;                /* raised surface on dark sections */
+  --ge-ink-muted: #4b564f;            /* muted text on paper (AA ≥ 4.5)  */
+
+  /* Hairlines — ink/paper at low opacity, the only "shadow" system */
+  --ge-line: rgba(14, 42, 34, 0.14);
+  --ge-line-faint: rgba(14, 42, 34, 0.08);
+  --ge-line-strong: rgba(14, 42, 34, 0.32);
+  --ge-line-light: rgba(242, 236, 220, 0.18);
+  --ge-line-light-faint: rgba(242, 236, 220, 0.1);
+
+  /* Image placeholder treatment (mockup only — replaced by real
+     photography in production) */
+  --ge-ph-scrim: rgba(14, 42, 34, 0.45);
+
+  /* ------------------------------------------------------------------
+     Typography
+     Display: Fraunces (OFL) — warm editorial serif, italic for emphasis
+     Body:    DM Sans (OFL)  — workhorse sans, Sharetribe --fontFamily
+     Mono:    Space Mono (OFL) — eyebrows, step numbers, data labels
+     ------------------------------------------------------------------ */
+  --ge-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --ge-font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --ge-text-xs: 12px;
+  --ge-text-s: 14px;
+  --ge-text-m: 16px;
+  --ge-text-l: 18px;
+  --ge-text-xl: 22px;
+  --ge-text-2xl: 28px;
+  --ge-text-3xl: 36px;
+  --ge-text-4xl: 48px;
+  --ge-text-hero: clamp(40px, 9vw, 72px);
+
+  --ge-leading-tight: 1.08;
+  --ge-leading-snug: 1.25;
+  --ge-leading-body: 1.6;
+
+  --ge-track-display: -0.02em;
+  --ge-track-eyebrow: 0.14em;
+
+  /* ------------------------------------------------------------------
+     Spacing — 6px baseline (mobile). Redefined to 8px at 768px below.
+     ------------------------------------------------------------------ */
+  --ge-space-3xs: 6px;
+  --ge-space-2xs: 12px;
+  --ge-space-xs: 18px;
+  --ge-space-s: 24px;
+  --ge-space-m: 36px;
+  --ge-space-l: 48px;
+  --ge-space-xl: 72px;
+  --ge-space-2xl: 96px;
+  --ge-space-3xl: 120px;
+
+  --ge-gutter: 24px;
+  --ge-container: 1168px;             /* 8px-baseline value              */
+
+  /* ------------------------------------------------------------------
+     Component metrics (all on baseline)
+     ------------------------------------------------------------------ */
+  --ge-nav-height: 60px;
+  --ge-control-height: 48px;          /* inputs + buttons, both grids    */
+  --ge-marker-size: 42px;             /* numbered step markers           */
+
+  --ge-radius-s: 6px;
+  --ge-radius-m: 12px;
+  --ge-radius-l: 18px;
+  --ge-radius-pill: 999px;            /* pill exception — not a grid val */
+
+  --ge-border-width: 1px;
+  --ge-border-width-strong: 2px;
+
+  /* ------------------------------------------------------------------
+     Depth + motion — hairline-first; one lift shadow, restrained motion
+     ------------------------------------------------------------------ */
+  --ge-shadow-lift: 0 12px 30px -18px rgba(14, 42, 34, 0.5);
+  --ge-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ge-duration: 0.18s;
+  --ge-duration-slow: 20s;            /* rotating sticker only           */
+}
+
+/* 8px baseline from 768px up */
+@media (min-width: 768px) {
+  :root {
+    --ge-space-3xs: 8px;
+    --ge-space-2xs: 16px;
+    --ge-space-xs: 24px;
+    --ge-space-s: 32px;
+    --ge-space-m: 40px;
+    --ge-space-l: 64px;
+    --ge-space-xl: 96px;
+    --ge-space-2xl: 128px;
+    --ge-space-3xl: 160px;
+
+    --ge-gutter: 32px;
+    --ge-nav-height: 64px;
+    --ge-marker-size: 48px;
+  }
+}

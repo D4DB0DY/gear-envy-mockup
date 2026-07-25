@@ -1,0 +1,1107 @@
+/* ==========================================================================
+   Gear Envy — shared styles
+   --------------------------------------------------------------------------
+   Class selectors only — no element selectors, so every rule maps 1:1 to a
+   Sharetribe CSS Module class later. All values come from tokens.css.
+   Breakpoints: 768px (--viewportMedium) and 1024px (--viewportLarge) only.
+   ========================================================================== */
+
+/* Box-sizing via universal selector (not an element selector) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------------
+   Page base
+   ------------------------------------------------------------------ */
+.ge-page {
+  margin: 0;
+  background: var(--ge-paper);
+  color: var(--ge-ink);
+  font-family: var(--fontFamily);
+  font-size: var(--ge-text-m);
+  line-height: var(--ge-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ge-h1,
+.ge-h2,
+.ge-h3,
+.ge-h4,
+.ge-p,
+.ge-ul,
+.ge-ol,
+.ge-figure,
+.ge-blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.ge-h1,
+.ge-h2,
+.ge-h3,
+.ge-h4 {
+  font-family: var(--ge-font-display);
+  font-weight: 560;
+  letter-spacing: var(--ge-track-display);
+  line-height: var(--ge-leading-tight);
+}
+
+.ge-h1 {
+  font-size: var(--ge-text-hero);
+}
+
+.ge-h2 {
+  font-size: var(--ge-text-3xl);
+}
+
+.ge-h3 {
+  font-size: var(--ge-text-xl);
+  line-height: var(--ge-leading-snug);
+}
+
+.ge-h4 {
+  font-size: var(--ge-text-l);
+  line-height: var(--ge-leading-snug);
+}
+
+/* Italic serif emphasis word inside headlines — the editorial signature */
+.ge-em {
+  font-style: italic;
+  font-weight: 480;
+}
+
+.ge-p {
+  max-width: 62ch;
+}
+
+.ge-lede {
+  font-size: var(--ge-text-l);
+  line-height: var(--ge-leading-body);
+  color: var(--ge-ink-muted);
+  max-width: 56ch;
+}
+
+.ge-lede--on-dark {
+  color: var(--ge-paper-muted);
+}
+
+.ge-small {
+  font-size: var(--ge-text-s);
+  color: var(--ge-ink-muted);
+}
+
+.ge-small--on-dark {
+  color: var(--ge-paper-muted);
+}
+
+.ge-ul {
+  list-style: none;
+}
+
+.ge-a {
+  color: inherit;
+  text-decoration-color: var(--marketplaceColorDark);
+  text-decoration-thickness: var(--ge-border-width-strong);
+  text-underline-offset: var(--ge-space-3xs);
+  transition: color var(--ge-duration) var(--ge-ease);
+}
+
+.ge-a:hover {
+  color: var(--marketplaceColorDark);
+}
+
+.ge-a:focus-visible,
+.ge-button:focus-visible,
+.ge-input:focus-visible,
+.ge-nav-toggle:focus-visible,
+.ge-faq-q:focus-visible,
+.ge-copy-btn:focus-visible {
+  outline: var(--ge-border-width-strong) solid var(--marketplaceColorDark);
+  outline-offset: var(--ge-space-3xs);
+}
+
+.ge-focus-dark:focus-visible {
+  outline-color: var(--marketplaceColor);
+}
+
+/* ------------------------------------------------------------------
+   Layout primitives
+   ------------------------------------------------------------------ */
+.ge-container {
+  width: 100%;
+  max-width: var(--ge-container);
+  margin-inline: auto;
+  padding-inline: var(--ge-gutter);
+}
+
+.ge-section {
+  padding-block: var(--ge-space-xl);
+}
+
+.ge-section--ink {
+  background: var(--ge-ink);
+  color: var(--ge-paper);
+}
+
+.ge-section--paper-2 {
+  background: var(--ge-paper-2);
+}
+
+.ge-section--bordered {
+  border-top: var(--ge-border-width) solid var(--ge-line);
+}
+
+.ge-split {
+  display: grid;
+  gap: var(--ge-space-l);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .ge-split {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--ge-space-xl);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Eyebrow / kicker — pill with ambient pulse dot
+   ------------------------------------------------------------------ */
+.ge-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ge-space-3xs);
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ge-ink-muted);
+  border: var(--ge-border-width) solid var(--ge-line);
+  border-radius: var(--ge-radius-pill);
+  padding: var(--ge-space-3xs) var(--ge-space-2xs);
+}
+
+.ge-eyebrow--on-dark {
+  color: var(--ge-paper-muted);
+  border-color: var(--ge-line-light);
+}
+
+.ge-eyebrow-dot {
+  width: var(--ge-space-3xs);
+  height: var(--ge-space-3xs);
+  border-radius: var(--ge-radius-pill);
+  background: var(--colorSuccess);
+  animation: ge-pulse 1.8s var(--ge-ease) infinite;
+}
+
+@keyframes ge-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(31, 122, 70, 0.45); }
+  70% { box-shadow: 0 0 0 var(--ge-space-3xs) rgba(31, 122, 70, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(31, 122, 70, 0); }
+}
+
+/* ------------------------------------------------------------------
+   Section header — numbered marker + constrained heading
+   ------------------------------------------------------------------ */
+.ge-section-head {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  margin-bottom: var(--ge-space-l);
+}
+
+.ge-marker {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ge-ink-muted);
+}
+
+.ge-marker--on-dark {
+  color: var(--ge-paper-muted);
+}
+
+.ge-section-head .ge-h2 {
+  max-width: 20ch;
+}
+
+/* ------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------ */
+.ge-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ge-space-3xs);
+  min-height: var(--ge-control-height);
+  padding-inline: var(--ge-space-s);
+  font-family: var(--fontFamily);
+  font-size: var(--ge-text-m);
+  font-weight: 700;
+  border-radius: var(--ge-radius-m);
+  border: var(--ge-border-width) solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--ge-duration) var(--ge-ease),
+    border-color var(--ge-duration) var(--ge-ease),
+    color var(--ge-duration) var(--ge-ease);
+}
+
+.ge-button--primary {
+  background: var(--marketplaceColor);
+  color: var(--ge-ink);
+}
+
+.ge-button--primary:hover {
+  background: var(--marketplaceColorDark);
+}
+
+.ge-button--ghost {
+  background: transparent;
+  color: var(--ge-ink);
+  border-color: var(--ge-line-strong);
+}
+
+.ge-button--ghost:hover {
+  border-color: var(--ge-ink);
+}
+
+.ge-button--ghost-dark {
+  background: transparent;
+  color: var(--ge-paper);
+  border-color: var(--ge-line-light);
+}
+
+.ge-button--ghost-dark:hover {
+  border-color: var(--ge-paper);
+}
+
+.ge-button-arrow {
+  width: var(--ge-space-2xs);
+  height: var(--ge-space-2xs);
+  transition: transform var(--ge-duration) var(--ge-ease);
+}
+
+.ge-button:hover .ge-button-arrow {
+  transform: translateX(var(--ge-space-3xs));
+}
+
+/* ------------------------------------------------------------------
+   Header / nav
+   ------------------------------------------------------------------ */
+.ge-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ge-paper);
+  border-bottom: var(--ge-border-width) solid var(--ge-line-faint);
+}
+
+.ge-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--ge-nav-height);
+  gap: var(--ge-space-s);
+}
+
+.ge-wordmark {
+  font-family: var(--ge-font-display);
+  font-size: var(--ge-text-xl);
+  font-weight: 640;
+  letter-spacing: var(--ge-track-display);
+  color: var(--ge-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ge-nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--ge-space-s);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ge-nav-links .ge-a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ge-nav-cta {
+  display: none;
+}
+
+.ge-nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--ge-space-3xs);
+  width: var(--ge-control-height);
+  height: var(--ge-control-height);
+  padding: var(--ge-space-2xs);
+  background: transparent;
+  border: var(--ge-border-width) solid var(--ge-line);
+  border-radius: var(--ge-radius-m);
+  cursor: pointer;
+}
+
+.ge-nav-toggle-bar {
+  display: block;
+  height: var(--ge-border-width-strong);
+  background: var(--ge-ink);
+}
+
+@media (min-width: 768px) {
+  .ge-nav-links,
+  .ge-nav-cta {
+    display: flex;
+  }
+
+  .ge-nav-toggle {
+    display: none;
+  }
+}
+
+/* Mobile menu panel (progressive enhancement — hidden without JS) */
+.ge-mobile-menu {
+  display: none;
+  border-top: var(--ge-border-width) solid var(--ge-line-faint);
+  padding-block: var(--ge-space-s);
+}
+
+.ge-mobile-menu.is-open {
+  display: block;
+}
+
+.ge-mobile-menu-list {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  list-style: none;
+  margin: 0 0 var(--ge-space-s);
+  padding: 0;
+}
+
+.ge-mobile-menu-list .ge-a {
+  text-decoration: none;
+  font-size: var(--ge-text-l);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------ */
+.ge-hero {
+  position: relative;
+  padding-block: var(--ge-space-l) var(--ge-space-xl);
+}
+
+.ge-hero-grid {
+  display: grid;
+  gap: var(--ge-space-l);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .ge-hero-grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--ge-space-xl);
+  }
+}
+
+.ge-hero-copy {
+  display: grid;
+  gap: var(--ge-space-s);
+  justify-items: start;
+}
+
+.ge-hero-copy .ge-lede {
+  max-width: 46ch;
+}
+
+/* Inline waitlist form */
+.ge-form-inline {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  width: 100%;
+  max-width: 62ch;
+}
+
+@media (min-width: 768px) {
+  .ge-form-inline {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.ge-input {
+  min-height: var(--ge-control-height);
+  padding-inline: var(--ge-space-2xs);
+  font-family: var(--fontFamily);
+  font-size: var(--ge-text-m);
+  color: var(--ge-ink);
+  background: var(--ge-paper);
+  border: var(--ge-border-width) solid var(--ge-line-strong);
+  border-radius: var(--ge-radius-m);
+  width: 100%;
+}
+
+.ge-input::placeholder {
+  color: var(--ge-ink-muted);
+}
+
+.ge-input--on-dark {
+  background: var(--ge-ink-2);
+  border-color: var(--ge-line-light);
+  color: var(--ge-paper);
+}
+
+.ge-input--on-dark::placeholder {
+  color: var(--ge-paper-muted);
+}
+
+/* ------------------------------------------------------------------
+   Image placeholders — mockup stand-ins for commissioned photography.
+   Dashed hairline well + mono label. Replaced by real <img> in prod.
+   ------------------------------------------------------------------ */
+.ge-media-ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--ge-paper-3);
+  border: var(--ge-border-width) dashed var(--ge-line-strong);
+  border-radius: var(--ge-radius-l);
+  padding: var(--ge-space-l);
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.ge-media-ph--hero {
+  aspect-ratio: 4 / 5;
+}
+
+.ge-media-ph--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.ge-media-ph--tile {
+  aspect-ratio: 4 / 3;
+}
+
+.ge-media-ph-label {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ge-ink-muted);
+  max-width: 40ch;
+  line-height: var(--ge-leading-body);
+}
+
+/* Rotating circular sticker — "waitlist open" badge over hero media */
+.ge-sticker {
+  position: absolute;
+  right: var(--ge-space-s);
+  bottom: var(--ge-space-s);
+  width: var(--ge-space-3xl);
+  height: var(--ge-space-3xl);
+  color: var(--ge-ink);
+}
+
+.ge-sticker-disc {
+  width: 100%;
+  height: 100%;
+  animation: ge-spin var(--ge-duration-slow) linear infinite;
+}
+
+.ge-sticker-text {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  fill: currentColor;
+}
+
+@keyframes ge-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ------------------------------------------------------------------
+   Stats / insight band
+   ------------------------------------------------------------------ */
+.ge-stats {
+  display: grid;
+  gap: var(--ge-space-s);
+}
+
+@media (min-width: 768px) {
+  .ge-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--ge-space-m);
+  }
+}
+
+.ge-stat {
+  border-top: var(--ge-border-width-strong) solid var(--ge-ink);
+  padding-top: var(--ge-space-2xs);
+}
+
+.ge-stat--on-dark {
+  border-top-color: var(--ge-paper);
+}
+
+.ge-stat-value {
+  font-family: var(--ge-font-display);
+  font-size: var(--ge-text-4xl);
+  line-height: var(--ge-leading-tight);
+  letter-spacing: var(--ge-track-display);
+}
+
+.ge-stat-label {
+  font-size: var(--ge-text-s);
+  color: var(--ge-ink-muted);
+  margin-top: var(--ge-space-3xs);
+  max-width: 34ch;
+}
+
+.ge-stat--on-dark .ge-stat-label {
+  color: var(--ge-paper-muted);
+}
+
+/* ------------------------------------------------------------------
+   Steps — numbered 3-step columns
+   ------------------------------------------------------------------ */
+.ge-steps {
+  display: grid;
+  gap: var(--ge-space-l);
+  counter-reset: ge-step;
+}
+
+@media (min-width: 768px) {
+  .ge-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--ge-space-m);
+  }
+}
+
+.ge-step {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  align-content: start;
+  border-top: var(--ge-border-width) solid var(--ge-line-strong);
+  padding-top: var(--ge-space-s);
+}
+
+.ge-step--on-dark {
+  border-top-color: var(--ge-line-light);
+}
+
+.ge-step-num {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-s);
+  letter-spacing: var(--ge-track-eyebrow);
+  color: var(--marketplaceColorDark);
+}
+
+.ge-step--on-dark .ge-step-num {
+  color: var(--marketplaceColor);
+}
+
+.ge-step-body {
+  font-size: var(--ge-text-s);
+  color: var(--ge-ink-muted);
+}
+
+.ge-step--on-dark .ge-step-body {
+  color: var(--ge-paper-muted);
+}
+
+/* ------------------------------------------------------------------
+   Showcase tiles — cameras & drones categories
+   ------------------------------------------------------------------ */
+.ge-tiles {
+  display: grid;
+  gap: var(--ge-space-s);
+}
+
+@media (min-width: 768px) {
+  .ge-tiles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ge-space-m);
+  }
+}
+
+.ge-tile {
+  display: grid;
+  gap: var(--ge-space-2xs);
+}
+
+.ge-tile-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--ge-space-2xs);
+}
+
+.ge-tile-tag {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ge-ink-muted);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+   Chips — future categories
+   ------------------------------------------------------------------ */
+.ge-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ge-space-2xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ge-chip {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  border: var(--ge-border-width) solid var(--ge-line-light);
+  border-radius: var(--ge-radius-pill);
+  padding: var(--ge-space-3xs) var(--ge-space-2xs);
+  color: var(--ge-paper-muted);
+}
+
+/* ------------------------------------------------------------------
+   FAQ accordion
+   ------------------------------------------------------------------ */
+.ge-faq {
+  border-top: var(--ge-border-width) solid var(--ge-line);
+}
+
+.ge-faq--on-dark {
+  border-top-color: var(--ge-line-light);
+}
+
+.ge-faq-item {
+  border-bottom: var(--ge-border-width) solid var(--ge-line);
+}
+
+.ge-faq--on-dark .ge-faq-item {
+  border-bottom-color: var(--ge-line-light);
+}
+
+.ge-faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ge-space-s);
+  width: 100%;
+  padding-block: var(--ge-space-s);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--fontFamily);
+  font-size: var(--ge-text-l);
+  font-weight: 700;
+  color: inherit;
+}
+
+.ge-faq-icon {
+  flex: none;
+  width: var(--ge-space-2xs);
+  height: var(--ge-space-2xs);
+  transition: transform var(--ge-duration) var(--ge-ease);
+}
+
+.ge-faq-q[aria-expanded="true"] .ge-faq-icon {
+  transform: rotate(45deg);
+}
+
+.ge-faq-a {
+  display: none;
+  padding-bottom: var(--ge-space-s);
+  color: var(--ge-ink-muted);
+  max-width: 62ch;
+}
+
+.ge-faq--on-dark .ge-faq-a {
+  color: var(--ge-paper-muted);
+}
+
+.ge-faq-a.is-open {
+  display: block;
+}
+
+/* No-JS fallback: answers visible by default when JS is absent */
+.ge-no-js .ge-faq-a {
+  display: block;
+}
+
+/* ------------------------------------------------------------------
+   CTA band
+   ------------------------------------------------------------------ */
+.ge-cta {
+  display: grid;
+  gap: var(--ge-space-m);
+  justify-items: start;
+}
+
+@media (min-width: 1024px) {
+  .ge-cta {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.ge-cta-copy {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  justify-items: start;
+}
+
+/* ------------------------------------------------------------------
+   Lender page — earnings example card + expectation list
+   ------------------------------------------------------------------ */
+.ge-card {
+  background: var(--ge-paper-2);
+  border: var(--ge-border-width) solid var(--ge-line-faint);
+  border-radius: var(--ge-radius-l);
+  padding: var(--ge-space-s);
+}
+
+@media (min-width: 768px) {
+  .ge-card {
+    padding: var(--ge-space-m);
+  }
+}
+
+.ge-card--ink {
+  background: var(--ge-ink-2);
+  border-color: var(--ge-line-light-faint);
+}
+
+.ge-card-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ge-space-s);
+  padding-block: var(--ge-space-2xs);
+  border-bottom: var(--ge-border-width) solid var(--ge-line-faint);
+  font-size: var(--ge-text-s);
+}
+
+.ge-card-row:last-child {
+  border-bottom: 0;
+}
+
+.ge-card-row-dt {
+  color: var(--ge-ink-muted);
+}
+
+.ge-card--ink .ge-card-row {
+  border-bottom-color: var(--ge-line-light-faint);
+}
+
+.ge-card--ink .ge-card-row-dt {
+  color: var(--ge-paper-muted);
+}
+
+.ge-card-row-dd {
+  font-family: var(--ge-font-mono);
+  text-align: right;
+}
+
+.ge-check-list {
+  display: grid;
+  gap: var(--ge-space-2xs);
+}
+
+.ge-check-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--ge-space-2xs);
+  align-items: start;
+}
+
+.ge-check-icon {
+  width: var(--ge-space-2xs);
+  height: var(--ge-space-2xs);
+  margin-top: var(--ge-space-3xs);
+  color: var(--colorSuccess);
+  flex: none;
+}
+
+/* ------------------------------------------------------------------
+   Waitlist confirmation — referral card + tier progress
+   ------------------------------------------------------------------ */
+.ge-confirm-head {
+  display: grid;
+  gap: var(--ge-space-s);
+  justify-items: start;
+  max-width: 62ch;
+}
+
+.ge-referral {
+  display: grid;
+  gap: var(--ge-space-s);
+}
+
+.ge-copy-field {
+  display: grid;
+  gap: var(--ge-space-2xs);
+}
+
+@media (min-width: 768px) {
+  .ge-copy-field {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.ge-copy-value {
+  display: flex;
+  align-items: center;
+  min-height: var(--ge-control-height);
+  padding-inline: var(--ge-space-2xs);
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-s);
+  background: var(--ge-paper);
+  border: var(--ge-border-width) solid var(--ge-line-strong);
+  border-radius: var(--ge-radius-m);
+  color: var(--ge-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ge-copy-btn {
+  min-height: var(--ge-control-height);
+  padding-inline: var(--ge-space-s);
+  font-family: var(--fontFamily);
+  font-size: var(--ge-text-m);
+  font-weight: 700;
+  color: var(--ge-ink);
+  background: var(--marketplaceColor);
+  border: 0;
+  border-radius: var(--ge-radius-m);
+  cursor: pointer;
+  transition: background-color var(--ge-duration) var(--ge-ease);
+}
+
+.ge-copy-btn:hover {
+  background: var(--marketplaceColorDark);
+}
+
+.ge-copy-btn.is-copied {
+  background: var(--colorSuccess);
+  color: var(--ge-paper);
+}
+
+/* Progress bar toward next tier */
+.ge-progress {
+  display: grid;
+  gap: var(--ge-space-3xs);
+}
+
+.ge-progress-track {
+  height: var(--ge-space-2xs);
+  background: var(--ge-ink-2);
+  border-radius: var(--ge-radius-pill);
+  overflow: hidden;
+}
+
+.ge-progress-fill {
+  height: 100%;
+  width: 0%;                    /* visual only — no working logic */
+  background: var(--marketplaceColor);
+  border-radius: var(--ge-radius-pill);
+}
+
+.ge-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ge-paper-muted);
+}
+
+/* Tier ladder */
+.ge-tiers {
+  display: grid;
+  gap: var(--ge-space-s);
+}
+
+@media (min-width: 768px) {
+  .ge-tiers {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--ge-space-m);
+  }
+}
+
+.ge-tier {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  align-content: start;
+  border: var(--ge-border-width) solid var(--ge-line-light-faint);
+  border-radius: var(--ge-radius-l);
+  padding: var(--ge-space-s);
+  transition: border-color var(--ge-duration) var(--ge-ease),
+              transform var(--ge-duration) var(--ge-ease),
+              box-shadow var(--ge-duration) var(--ge-ease);
+}
+
+.ge-tier:hover {
+  border-color: var(--marketplaceColor);
+  transform: translateY(calc(-1 * var(--ge-space-3xs)));
+  box-shadow: var(--ge-shadow-lift);
+}
+
+.ge-tier-count {
+  font-family: var(--ge-font-display);
+  font-size: var(--ge-text-4xl);
+  line-height: var(--ge-leading-tight);
+  color: var(--marketplaceColor);
+}
+
+.ge-tier-name {
+  font-family: var(--ge-font-display);
+  font-size: var(--ge-text-xl);
+}
+
+.ge-tier-desc {
+  font-size: var(--ge-text-s);
+  color: var(--ge-paper-muted);
+}
+
+/* ------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------ */
+.ge-footer {
+  border-top: var(--ge-border-width) solid var(--ge-line-light-faint);
+  padding-block: var(--ge-space-l);
+}
+
+.ge-footer-grid {
+  display: grid;
+  gap: var(--ge-space-m);
+}
+
+@media (min-width: 768px) {
+  .ge-footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.ge-footer-brand {
+  display: grid;
+  gap: var(--ge-space-2xs);
+  justify-items: start;
+  max-width: 40ch;
+}
+
+.ge-footer-heading {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ge-paper-muted);
+  margin-bottom: var(--ge-space-2xs);
+}
+
+.ge-footer-list {
+  display: grid;
+  gap: var(--ge-space-3xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ge-footer-list .ge-a {
+  text-decoration: none;
+  color: var(--ge-paper-muted);
+}
+
+.ge-footer-list .ge-a:hover {
+  color: var(--ge-paper);
+}
+
+.ge-footer-legal {
+  margin-top: var(--ge-space-l);
+  padding-top: var(--ge-space-s);
+  border-top: var(--ge-border-width) solid var(--ge-line-light-faint);
+  font-size: var(--ge-text-xs);
+  color: var(--ge-paper-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ge-space-2xs);
+  justify-content: space-between;
+}
+
+/* ------------------------------------------------------------------
+   Small utilities — spacing rhythm + dark wordmark variant
+   ------------------------------------------------------------------ */
+.ge-mt-s {
+  margin-top: var(--ge-space-s);
+}
+
+.ge-mt-m {
+  margin-top: var(--ge-space-m);
+}
+
+.ge-mt-l {
+  margin-top: var(--ge-space-l);
+}
+
+.ge-wordmark--on-dark {
+  color: var(--ge-paper);
+}
+
+.ge-label {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-xs);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ge-ink-muted);
+  margin: 0 0 var(--ge-space-2xs);
+}
+
+/* ------------------------------------------------------------------
+   Accessibility helpers
+   ------------------------------------------------------------------ */
+.ge-sr-only {
+  position: absolute;
+  width: var(--ge-border-width);
+  height: var(--ge-border-width);
+  padding: 0;
+  margin: calc(-1 * var(--ge-border-width));
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ge-eyebrow-dot,
+  .ge-sticker-disc {
+    animation: none;
+  }
+
+  .ge-a,
+  .ge-button,
+  .ge-tier,
+  .ge-faq-icon,
+  .ge-copy-btn,
+  .ge-button-arrow {
+    transition: none;
+  }
+}
