@@ -38,13 +38,17 @@ repeats the shared footer, so footer markers appear ×3).
 
 | Marker | Where |
 |---|---|
-| `[IMAGE: creator loading drone case into car, Sydney, golden hour]` | Home hero |
 | `[IMAGE: full-frame mirrorless body in creator's hands, Blue Mountains overlook]` | Home showcase tile |
 | `[IMAGE: drone lifting off, Coogee headland, sunrise]` | Home showcase tile |
 | `[IMAGE: fast prime lenses on cafe table, Surry Hills]` | Home showcase tile |
 | `[IMAGE: gimbal and support kit packed in gear bag, car boot]` | Home showcase tile |
 | `[IMAGE: lender handing camera bag to renter, Sydney terrace doorstep, morning light]` | Lenders hero |
 | `[IMAGE: two creators comparing camera screens, Sydney rooftop, dusk]` | Waitlist referral section |
+
+**Note — home hero:** the "creator loading drone case into car, Sydney,
+golden hour" slot now carries an **AI-generated stand-in**
+(`assets/hero-drone-car-golden-hour.jpg`). It is marked in an HTML comment
+and must be replaced with commissioned photography before launch.
 
 ## Pages that don't exist yet
 

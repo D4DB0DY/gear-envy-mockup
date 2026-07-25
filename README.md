@@ -55,7 +55,7 @@ replaces the wells in production. No stock was sourced, per the brief.
 
 ## Fonts
 
-Both typefaces are SIL Open Font License — free for commercial use,
+All typefaces are SIL Open Font License — free for commercial use,
 self-hostable, no per-seat fees.
 
 | Role | Font | Licence | Source |
@@ -63,6 +63,23 @@ self-hostable, no per-seat fees.
 | Display / headlines | **Fraunces** (incl. italic, optical size axis) | OFL 1.1 | fonts.google.com/specimen/Fraunces |
 | Body / UI | **DM Sans** | OFL 1.1 | fonts.google.com/specimen/DM+Sans |
 | Mono (eyebrows, step numbers, data) | **Space Mono** | OFL 1.1 | fonts.google.com/specimen/Space+Mono |
+
+**Why Fraunces stays (reviewed 26/07/2026).** We re-evaluated the display
+face against the brand bar: warm, confident, trustworthy enough for a
+$4,000 handover, and distinctive (the brief bans default-Inter styling).
+Alternatives considered from a curated pairing database: Playfair Display
+(reads fashion-luxury — the brief bans luxury framing), Newsreader
+(trustworthy but neutral to the point of bland), Calistoga (warm but
+retro-cute, single weight), Lora (organic but weak at display sizes).
+Fraunces is the only candidate that is simultaneously warm, editorial and
+unmistakably characterful, with true italics powering the emphasis-word
+signature. What we changed rather than the family: headings now render at
+weight 600 (was 560) with explicit `font-optical-sizing: auto`, which
+tightens stroke contrast at display sizes and adds authority; the
+SOFT/WONK axes remain at their neutral defaults so it never tips into
+"artisanal bakery". If it still reads too quirky in stakeholder review,
+the fallback is Newsreader — one token change (`--ge-font-display`), since
+the whole system hangs off tokens.
 
 The mockup loads them from Google Fonts for convenience. For production,
 self-host the woff2 files inside the Sharetribe app (better performance, no

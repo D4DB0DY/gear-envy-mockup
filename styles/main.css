@@ -44,7 +44,8 @@
 .ge-h3,
 .ge-h4 {
   font-family: var(--ge-font-display);
-  font-weight: 560;
+  font-weight: 600;
+  font-optical-sizing: auto;
   letter-spacing: var(--ge-track-display);
   line-height: var(--ge-leading-tight);
 }
@@ -464,6 +465,22 @@
   color: var(--ge-paper-muted);
 }
 
+/* Hero media (real image) */
+.ge-hero-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--ge-radius-l);
+  overflow: hidden;
+  background: var(--ge-paper-3);
+}
+
+.ge-hero-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ------------------------------------------------------------------
    Image placeholders — mockup stand-ins for commissioned photography.
    Dashed hairline well + mono label. Replaced by real <img> in prod.
@@ -516,6 +533,8 @@
 .ge-sticker-disc {
   width: 100%;
   height: 100%;
+  transform-box: fill-box;
+  transform-origin: center;
   animation: ge-spin var(--ge-duration-slow) linear infinite;
 }
 
