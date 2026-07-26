@@ -38,16 +38,13 @@ repeats the shared footer, so footer markers appear ×3).
 
 | Marker | Where |
 |---|---|
-| `[IMAGE: full-frame mirrorless body in creator's hands, Blue Mountains overlook]` | Home showcase tile |
-| `[IMAGE: drone lifting off, Coogee headland, sunrise]` | Home showcase tile |
-| `[IMAGE: fast prime lenses on cafe table, Surry Hills]` | Home showcase tile |
-| `[IMAGE: gimbal and support kit packed in gear bag, car boot]` | Home showcase tile |
 | `[IMAGE: two creators comparing camera screens, Sydney rooftop, dusk]` | Waitlist referral section |
 
-**Note — home + lenders heroes:** both hero slots now carry **AI-generated
-stand-ins** (`assets/hero-drone-car-golden-hour.jpg`,
-`assets/lenders-hero-doorstep.jpg`). They are marked in HTML comments and
-must be replaced with commissioned photography before launch.
+**Note — heroes + showcase tiles:** both hero slots and all four home
+showcase tiles now carry **AI-generated stand-ins** (`assets/*.jpg`,
+marked in HTML comments). They must be replaced with commissioned
+photography before launch. The only remaining `[IMAGE: …]` well is the
+waitlist referral section above.
 
 ## Pages that don't exist yet
 

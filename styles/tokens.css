@@ -119,6 +119,9 @@
   --ge-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ge-duration: 0.18s;
   --ge-duration-slow: 20s;            /* rotating sticker only           */
+  --ge-duration-reveal: 0.55s;        /* scroll reveal transition        */
+  --ge-reveal-rise: 12px;             /* scroll reveal travel distance   */
+  --ge-stagger: 0.08s;                /* per-sibling reveal delay        */
 }
 
 /* 8px baseline from 768px up */

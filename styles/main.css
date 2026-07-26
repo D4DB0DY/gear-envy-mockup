@@ -292,6 +292,52 @@
   transform: translateX(var(--ge-space-3xs));
 }
 
+/* Tile media (real images) */
+.ge-tile-media {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--ge-radius-l);
+  overflow: hidden;
+  background: var(--ge-paper-3);
+}
+
+.ge-tile-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ------------------------------------------------------------------
+   Scroll reveal — progressive enhancement. Only active once JS adds
+   .ge-js to <html>; without JS every element renders fully visible.
+   Ports to Sharetribe as an IntersectionObserver hook.
+   ------------------------------------------------------------------ */
+.ge-js .ge-reveal {
+  opacity: 0;
+  transform: translateY(var(--ge-reveal-rise));
+  transition:
+    opacity var(--ge-duration-reveal) var(--ge-ease),
+    transform var(--ge-duration-reveal) var(--ge-ease);
+}
+
+.ge-js .ge-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered siblings (steps, stats, tiles, tiers) */
+.ge-js .ge-reveal-stagger > :nth-child(2) {
+  transition-delay: var(--ge-stagger);
+}
+
+.ge-js .ge-reveal-stagger > :nth-child(3) {
+  transition-delay: calc(var(--ge-stagger) * 2);
+}
+
+.ge-js .ge-reveal-stagger > :nth-child(4) {
+  transition-delay: calc(var(--ge-stagger) * 3);
+}
+
 /* ------------------------------------------------------------------
    Header / nav
    ------------------------------------------------------------------ */
@@ -1124,6 +1170,12 @@
   .ge-eyebrow-dot,
   .ge-sticker-disc {
     animation: none;
+  }
+
+  .ge-js .ge-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .ge-a,
