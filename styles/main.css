@@ -48,6 +48,7 @@
   font-optical-sizing: auto;
   letter-spacing: var(--ge-track-display);
   line-height: var(--ge-leading-tight);
+  text-wrap: balance;
 }
 
 .ge-h1 {
@@ -493,7 +494,6 @@
   border: var(--ge-border-width) dashed var(--ge-line-strong);
   border-radius: var(--ge-radius-l);
   padding: var(--ge-space-l);
-  min-height: 100%;
   overflow: hidden;
 }
 
@@ -579,6 +579,17 @@
   font-size: var(--ge-text-4xl);
   line-height: var(--ge-leading-tight);
   letter-spacing: var(--ge-track-display);
+}
+
+/* Placeholder stat values — long bracketed markers get the mono pending
+   treatment instead of display sizing; real numbers use .ge-stat-value */
+.ge-stat-value--pending {
+  font-family: var(--ge-font-mono);
+  font-size: var(--ge-text-s);
+  letter-spacing: var(--ge-track-eyebrow);
+  text-transform: uppercase;
+  line-height: var(--ge-leading-body);
+  color: var(--ge-ink-muted);
 }
 
 .ge-stat-label {
@@ -971,7 +982,7 @@
   display: grid;
   gap: var(--ge-space-2xs);
   align-content: start;
-  border: var(--ge-border-width) solid var(--ge-line-light-faint);
+  border: var(--ge-border-width) solid var(--ge-line);
   border-radius: var(--ge-radius-l);
   padding: var(--ge-space-s);
   transition: border-color var(--ge-duration) var(--ge-ease),
@@ -980,7 +991,7 @@
 }
 
 .ge-tier:hover {
-  border-color: var(--marketplaceColor);
+  border-color: var(--marketplaceColorDark);
   transform: translateY(calc(-1 * var(--ge-space-3xs)));
   box-shadow: var(--ge-shadow-lift);
 }
@@ -989,7 +1000,7 @@
   font-family: var(--ge-font-display);
   font-size: var(--ge-text-4xl);
   line-height: var(--ge-leading-tight);
-  color: var(--marketplaceColor);
+  color: var(--marketplaceColorDark);
 }
 
 .ge-tier-name {
@@ -999,7 +1010,7 @@
 
 .ge-tier-desc {
   font-size: var(--ge-text-s);
-  color: var(--ge-paper-muted);
+  color: var(--ge-ink-muted);
 }
 
 /* ------------------------------------------------------------------
